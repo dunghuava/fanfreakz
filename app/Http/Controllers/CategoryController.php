@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use Illuminate\Routing\Route;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -11,74 +13,50 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.category.list');
+        $page  = $request->get('page') ?? 1;
+        $items = Category::forPage($page)->orderBy('created_at','desc')->paginate(); // list phan trang
+        return view('admin.category.list',['items'=>$items]);
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request,$id=0)
     {
-        return view('admin.category.edit');
+        $frmdata = $request->all();        
+        if($frmdata){
+            $item = new Category();
+            $item->name = $frmdata['name'] ?? null;
+            $item->alias = $frmdata['alias'] ?? null;
+            $item->category_id = $frmdata['category_id'] ?? 0;
+            $item->description = $frmdata['description'] ?? null;
+            $item->active = $frmdata['active'] ?? 0;
+            $result = null;
+            if($id>0){
+               $result = Category::where('id',$id)->update($item->toArray()); // updated
+               if($result){
+                    return redirect()->route('category');
+               }
+            }else{
+                $result = $item->save(); // created
+            }
+        }
+        $item = null;
+        if($id>0){
+            $item = Category::find($id); // edited
+        }
+        return view('admin.category.add',['item'=>$item]);
     }
-
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('admin.category.edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Delete data of the resource.
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
+        return redirect()->route('category');
     }
 }

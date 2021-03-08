@@ -24,8 +24,9 @@ Route::match(['get', 'post'],'admin/logout','AccountController@logout')->name('l
 Route::group(['prefix' => 'admin','middleware' => ['auth:web','checkloginadmin']], function () {
     Route::get('/','DasboardController@index');
     Route::group(['prefix' => 'category'], function () {
-        Route::get('/','CategoryController@index');
+        Route::get('/','CategoryController@index')->name('category');
+        Route::get('/{id}/delete','CategoryController@destroy');
         Route::match(['get', 'post'],'add','CategoryController@create');
-        Route::match(['get', 'post'],'/{id}/edit','CategoryController@edit');
+        Route::match(['get', 'post'],'/{id}/edit','CategoryController@create');
     });
 });
