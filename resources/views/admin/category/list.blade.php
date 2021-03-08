@@ -9,7 +9,6 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-
         <table class="table table-striped">
           <thead>
             <tr>
