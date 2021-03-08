@@ -1,36 +1,51 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <base href="{{asset('')}}">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <title>Đăng nhập</title>
-        <link href="{{asset('public/css/forms.min.css')}}" rel="stylesheet">
-        <link href="{{asset('public/css/buttons.min.css')}}" rel="stylesheet">
-        <link href="{{asset('public/css/login.min.css')}}" rel="stylesheet">
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Đăng nhập</title>
+    <link href="{{asset('plugins/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('plugins/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('plugins/nprogress/nprogress.css')}}" rel="stylesheet">
+    <link href="{{asset('plugins/animate.css/animate.min.css')}}" rel="stylesheet">
+    <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
   </head>
-  <body class="login js login-action-login wp-core-ui  locale-en-us">
-    <div id="login">
-        <p class="message">Chào mừng đến với phpAdmin<br> Nền tảng website admin <strong>tốt nhất</strong></p>
-        <form name="loginform" id="loginform" method="post">
-            @csrf
-            <p>
-                <label for="username">Tên tài khoản</label>
-                <input type="text" name="username" id="username" class="input" value="" size="20" autocapitalize="off">
-            </p>
-            <div class="user-pass-wrap">
-                <label for="password">Mật khẩu</label>
-                <div class="wp-pwd">
-                    <input type="text" name="password" id="password" class="input password-input" value="" size="20">
+  <body class="login">
+    <div>
+      <a class="hiddenanchor" id="signin"></a>
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form name="loginform" method="post">
+               @csrf
+              <h1>Login Account</h1>
+              <div>
+                <input name="username" type="text" class="form-control" placeholder="Username" required="" />
+              </div>
+              <div>
+                <input name="password" type="password" class="form-control" placeholder="Password" required="" />
+              </div>
+              <div>
+                <button type="submit"  name="submit class="btn btn-default submit">Log in</button>
+                <button type="button" class="">Lost your password?</button>
+              </div>
+              <div class="clearfix"></div>
+              <div class="separator">
+                <p class="change_link">New to site?
+                  <a> Create Account </a>
+                </p>
+                <div class="clearfix"></div>
+                <br />
+                <div>
+                  <p>© 2021 All Rights Reserved. Privacy and Terms</p>
                 </div>
-            </div>
-            <p class="submit">
-                <input style="width:100%" type="submit" name="submit" id="wp-submit" class="button button-primary button-large"
-                    value="Đăng nhập">
-            </p>
-        </form>
-        <p id="backtoblog"><a href="">← Về trang chủ </a></p>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
