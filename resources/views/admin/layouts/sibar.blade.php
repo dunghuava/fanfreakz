@@ -7,7 +7,7 @@
           <img src="{{asset('public/images/img.jpg')}}" alt="..." class="img-circle profile_img">
         </div>
         <div class="profile_info">
-          <span>Online</span>
+          <span style="color: green">Online</span>
           <h2>{{Auth::user()->fullname}}</h2>
         </div>
       </div>
@@ -20,61 +20,29 @@
           <ul class="nav side-menu">
             {{-- sysmenu --}}
             <li>
-              <a><i class="fa fa-home"></i>&nbsp;Trang chủ</a>
+              <a href="admin"><i class="fa fa-home"></i>&nbsp;Trang chủ</a>
+            </li>
+            <li><a><i class="fa fa-bars"></i> Danh mục <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="admin/category/add">Thêm mới</a></li>
+                <li><a href="admin/category">Tất cả danh mục</a></li>
+              </ul>
+            </li>
+            <li><a><i class="fa fa-pie-chart"></i> Sản phẩm <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="admin/product/add">Thêm mới</a></li>
+                <li><a href="admin/product">Tất cả sản phẩm</a></li>
+              </ul>
+            </li>
+            <li><a><i class="fa fa-users"></i> Tài khoản <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="admin/account/add">Thêm mới</a></li>
+                <li><a href="admin/account">Tất cả tài khoản</a></li>
+              </ul>
             </li>
             <li>
-              <a><i class="fa fa-database"></i>&nbsp;Danh mục
-                  <span class="fa fa-chevron-down"></span>
-              </a>
-                <ul class="nav child_menu">
-                    <li><a href="">Submenu</a></li>
-                    <li><a href="">Submenu</a></li>
-                    <li><a href="">Submenu</a></li>
-                </ul>
+              <a href="admin/logout"><i class="fa fa-sign-out"></i>&nbsp;Thoát</a>
             </li>
-              <li>
-                <a><i class="fa fa-database"></i>&nbsp;Sản phẩm
-                    <span class="fa fa-chevron-down"></span>
-                </a>
-                  <ul class="nav child_menu">
-                      <li><a href="">Submenu</a></li>
-                      <li><a href="">Submenu</a></li>
-                      <li><a href="">Submenu</a></li>
-                  </ul>
-              </li>
-              <li>
-                <a><i class="fa fa-anchor"></i>&nbsp;Mở rộng
-                    <span class="fa fa-chevron-down"></span>
-                </a>
-                  <ul class="nav child_menu">
-                      <li><a href="">Submenu</a></li>
-                      <li><a href="">Submenu</a></li>
-                      <li><a href="">Submenu</a></li>
-                  </ul>
-              </li>
-              <li>
-                <a><i class="fa fa-users"></i>&nbsp;Tài khoản
-                    <span class="fa fa-chevron-down"></span>
-                </a>
-                  <ul class="nav child_menu">
-                      <li><a href="">Submenu</a></li>
-                      <li><a href="">Submenu</a></li>
-                      <li><a href="">Submenu</a></li>
-                  </ul>
-              </li>
-              <li>
-                <a><i class="fa fa-cogs"></i>&nbsp;Cài đặt
-                    <span class="fa fa-chevron-down"></span>
-                </a>
-                  <ul class="nav child_menu">
-                      <li><a href="">Submenu</a></li>
-                      <li><a href="">Submenu</a></li>
-                      <li><a href="">Submenu</a></li>
-                  </ul>
-              </li>
-              <li>
-                <a href="admin/logout"><i class="fa fa-sign-out"></i>&nbsp;Thoát</a>
-              </li>
             {{-- sysmenu --}}
           </ul>
         </div>

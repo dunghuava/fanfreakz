@@ -25,10 +25,10 @@ class AccountController extends Controller
         if(Auth::check()){
             return redirect('admin');
         }
-        return view('system.account.login');
+        return view('admin.account.login');
     }
     public function profile(){
-        return view('system.account.profile');
+        return view('admin.account.profile');
     }
     public function logout(){
         Auth::logout();

@@ -1,4 +1,4 @@
-@extends('system.layouts.master')
+@extends('admin.layouts.master')
 @section('title','Hồ sơ cá nhân')
 @section('content')
 <div class="row">
