@@ -13,3 +13,42 @@ CREATE TABLE `size` (
  `updated_at` varchar(14) NOT NULL,
  PRIMARY KEY (`id_size`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `categories` ADD `highlights` INT NOT NULL COMMENT '0=no;1=yes' AFTER `active`;
+
+CREATE TABLE `customer` (
+ `id_customer` int(11) NOT NULL AUTO_INCREMENT,
+ `name_customer` varchar(225) NOT NULL,
+ `email_customer` varchar(225) NOT NULL,
+ `pass_customer` varchar(225) NOT NULL,
+ `created_at` int(14) NOT NULL,
+ `updated_at` int(14) NOT NULL,
+ PRIMARY KEY (`id_customer`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `product` (
+ `id_product` int(11) NOT NULL AUTO_INCREMENT,
+ `name_product` varchar(250) NOT NULL,
+ `sale_product` int(11) NOT NULL COMMENT '0=no;1=sale',
+ `price_product` varchar(50) NOT NULL,
+ `price_sale_product` varchar(50) NOT NULL,
+ `keyword_product` text NOT NULL,
+ `description_product` mediumtext NOT NULL,
+ `content_product` mediumtext NOT NULL,
+ `shipping_product` mediumtext NOT NULL,
+ `size_chart_product` mediumtext NOT NULL,
+ `created_at` varchar(14) NOT NULL,
+ `updated_at` varchar(14) NOT NULL,
+ PRIMARY KEY (`id_product`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `product_size_color` (
+ `id_product_size_color` int(11) NOT NULL AUTO_INCREMENT,
+ `id_product` int(11) NOT NULL,
+ `id_size` int(11) NOT NULL,
+ `id_color` int(11) NOT NULL,
+ `amount` varchar(50) NOT NULL,
+ `created_at` varchar(14) NOT NULL,
+ `updated_at` varchar(14) NOT NULL,
+ PRIMARY KEY (`id_product_size_color`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
